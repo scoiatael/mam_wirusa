@@ -10,22 +10,29 @@ L.Icon.Default.mergeOptions({
 
 const PolandCenter = [52.25, 19, 25]
 
-function Map(id) {
-    const map = L.map(id).setView(PolandCenter, 6);
+function Map(el) {
+    const map = L.map(el).setView(PolandCenter, 6);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     const popup = L.popup();
+    const target = el.getAttribute('data-target');
+    if (target) {
+        const targetEl = window.document.getElementById(target)
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent(e.latlng.toString())
+                .openOn(map);
+            targetEl.value = JSON.stringify({
+                latlng: e.latlng,
+                zoom: map.getZoom()
+            })
+        }
 
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent(`You clicked the map at ${e.latlng.toString()} with zoom level ${map.getZoom()}`)
-            .openOn(map);
+        map.on('click', onMapClick);
     }
-
-    map.on('click', onMapClick);
 }
 export default Map;

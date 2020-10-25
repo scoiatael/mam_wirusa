@@ -1,3 +1,8 @@
+Postgrex.Types.define(
+  MamWirusa.PostgresTypes,
+  [Geo.PostGIS.Extension] ++ Ecto.Adapters.Postgres.extensions()
+)
+
 defmodule MamWirusa.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications

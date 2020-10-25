@@ -1,3 +1,9 @@
+<section class="row">
+  <div class="column">
+    <a class="button button-outline button-danger" href="/cases/new"><%= gettext "Zgłoś przypadek" %></a>
+  </div>
+</section>
+
 <section class="phx-hero" id="map-hero">
   <h1><%= gettext "Ładowanie ostatnich przypadków..." %></h1>
 </section>

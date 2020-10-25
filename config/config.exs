@@ -10,6 +10,7 @@ use Mix.Config
 config :mam_wirusa,
   ecto_repos: [MamWirusa.Repo]
 
+config :mam_wirusa, MamWirusa.Repo, types: MamWirusa.PostgresTypes
 config :mam_wirusa, event_stores: [MamWirusa.EventStore]
 
 # Configures the endpoint

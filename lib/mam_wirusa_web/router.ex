@@ -17,6 +17,7 @@ defmodule MamWirusaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/cases", CaseController, only: [:new, :create]
   end
 
   # Other scopes may use custom stacks.

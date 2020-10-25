@@ -46,7 +46,9 @@ defmodule MamWirusa.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:commanded, "~> 1.2"},
-      {:commanded_eventstore_adapter, "~> 1.2"}
+      {:commanded_eventstore_adapter, "~> 1.2"},
+      {:geo, "~> 3.1.0"},
+      {:geo_postgis, "~> 3.1.0"}
     ]
   end
 
