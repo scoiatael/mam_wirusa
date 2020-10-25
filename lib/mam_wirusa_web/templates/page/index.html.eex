@@ -1,37 +1,27 @@
 <section class="phx-hero" id="map-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace of mind from prototype to production</p>
+  <h1><%= gettext "Ładowanie ostatnich przypadków..." %></h1>
 </section>
 
 <section class="row">
   <article class="column">
-    <h2>Resources</h2>
+    <h2><%= gettext "Pomoc" %></h2>
     <ul>
       <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
+          <a href="<%= gettext "https://pacjent.gov.pl/aktualnosc/podejrzewasz-ze-masz-koronawirusa" %>"><%= gettext "pacjent.gov.pl" %></a>
       </li>
     </ul>
   </article>
   <article class="column">
-    <h2>Help</h2>
+    <h2><%= gettext "O stronie" %></h2>
     <ul>
       <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+        <a href="https://github.com/scoiatael/mam_wirusa"><%= gettext "Kod open-source" %></a>
       </li>
       <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+        <a href="https://resume.czaplin.ski"><%= gettext "Autor" %></a>
       </li>
       <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
+        <a href="https://hexdocs.pm/phoenix/overview.html">Built with ❤ using Phoenix</a>
       </li>
     </ul>
   </article>
