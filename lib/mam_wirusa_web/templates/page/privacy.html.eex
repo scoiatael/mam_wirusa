@@ -1,0 +1,20 @@
+<section class="phx-hero">
+  <h1><%= gettext "Prywatność" %></h1>
+  <div>
+      <%= gettext """
+Ta strona nie używa plików cookies ani nie zbiera danych osobowych.
+
+W logach serwera HTTP mogą pojawić się takie informacje jak publiczny adres IP przeglądarki, jej wersja oraz wersja systemu operacyjnego.
+
+W przypadku jakichkolwiek zmian będę informował poprzez aktualizację na stronie głównej.
+      """ %>
+  </div>
+</section>
+
+<section class="row">
+    <div class="column">
+      <%= gettext """
+W razie pytań oraz sugestii proszę o kontakt poprzez %{mailto}.
+      """, mailto: "webmaster@scoiatael.dev" %>
+    </div>
+</section>

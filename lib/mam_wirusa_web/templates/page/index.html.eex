@@ -7,28 +7,3 @@
 <section class="phx-hero" id="map-hero">
   <h1><%= gettext "Ładowanie ostatnich przypadków..." %></h1>
 </section>
-
-<section class="row">
-  <article class="column">
-    <h2><%= gettext "Pomoc" %></h2>
-    <ul>
-      <li>
-          <a href="<%= gettext "https://pacjent.gov.pl/aktualnosc/podejrzewasz-ze-masz-koronawirusa" %>"><%= gettext "pacjent.gov.pl" %></a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2><%= gettext "O stronie" %></h2>
-    <ul>
-      <li>
-        <a href="https://github.com/scoiatael/mam_wirusa"><%= gettext "Kod open-source" %></a>
-      </li>
-      <li>
-        <a href="https://resume.czaplin.ski"><%= gettext "Autor" %></a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Built with ❤ using Phoenix</a>
-      </li>
-    </ul>
-  </article>
-</section>
