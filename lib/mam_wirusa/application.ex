@@ -1,16 +1,15 @@
+Postgrex.Types.define(
+  MamWirusa.PostgresTypes,
+  [Geo.PostGIS.Extension] ++ Ecto.Adapters.Postgres.extensions(),
+  json: Jason
+)
+
 defmodule MamWirusa.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
 
   use Application
-
-  use Commanded.Application,
-    otp_app: :mam_wirusa,
-    event_store: [
-      adapter: Commanded.EventStore.Adapters.EventStore,
-      event_store: MamWirusa.EventStore
-    ]
 
   def start(_type, _args) do
     children = [
@@ -21,9 +20,10 @@ defmodule MamWirusa.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: MamWirusa.PubSub},
       # Start the Endpoint (http/https)
-      MamWirusaWeb.Endpoint
+      MamWirusaWeb.Endpoint,
       # Start a worker by calling: MamWirusa.Worker.start_link(arg)
       # {MamWirusa.Worker, arg}
+      MamWirusa.Command
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

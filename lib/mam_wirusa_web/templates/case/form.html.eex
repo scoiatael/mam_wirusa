@@ -1,0 +1,27 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p><%= "Proszę, popraw błędy poniżej:" %></p>
+    </div>
+  <% end %>
+
+  <%= label f, :infected_at, (gettext "Od kiedy?") %>
+  <%= datetime_select f, :infected_at, default: (DateTime.utc_now()) %>
+  <%= error_tag f, :infected_at %>
+
+  <%= label f, :location, (gettext "Gdzie?") %>
+  <%= error_tag f, :location %>
+    <section class="phx-hero" id="map-hero" data-target-location="case_location" data-target-location-zoom="case_location_accuracy">
+      <h1><%= gettext "Ładowanie mapy..." %></h1>
+    </section>
+  <%= hidden_input f, :location %>
+  <%= hidden_input f, :location_accuracy %>
+
+  <%= label f, :information, (gettext "Kto mógł się od Ciebie zarazić?") %>
+  <%= textarea f, :information %>
+  <%= error_tag f, :information %>
+
+  <div>
+    <%= submit (gettext "Zapisz") %>
+  </div>
+<% end %>

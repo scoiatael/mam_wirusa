@@ -14,7 +14,8 @@ database_url =
 config :mam_wirusa, MamWirusa.Repo,
   # ssl: true,
   url: database_url,
-  pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "10")
+  pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "10"),
+  types: MamWirusa.PostgresTypes
 
 eventstore_url =
   System.get_env("EVENTSTORE_URL") ||

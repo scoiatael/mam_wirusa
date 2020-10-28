@@ -7,7 +7,8 @@ config :mam_wirusa, MamWirusa.Repo,
   database: "mam_wirusa_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 10,
+  types: MamWirusa.PostgresTypes
 
 config :mam_wirusa, MamWirusa.EventStore,
   serializer: Commanded.Serialization.JsonSerializer,
