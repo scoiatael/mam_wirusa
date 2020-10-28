@@ -6,4 +6,7 @@
 
 <section class="phx-hero" id="map-hero">
   <h1><%= gettext "Ładowanie ostatnich przypadków..." %></h1>
+  <script>
+  window.Cases = JSON.parse('<%= raw(Jason.encode!(@cases))  %>')
+  </script>
 </section>

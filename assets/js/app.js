@@ -15,9 +15,14 @@ import "../css/app.scss"
 import "phoenix_html"
 
 import Map from "./map"
+import Marker from "./marker"
 
 const mapID = 'map-hero'
 const mapEl = window.document.getElementById(mapID)
 if (mapEl) {
-  Map(mapEl)
+  const map = Map(mapEl)
+
+  if (window.Cases) {
+    console.log(window.Cases.map(([lng, lat, acc, info, reported_at]) => Marker({lng, lat, acc}).bindPopup(`${reported_at} - ${info}`).addTo(map)))
+  }
 }

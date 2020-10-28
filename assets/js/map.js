@@ -1,12 +1,18 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
+import iconUrl from 'leaflet/dist/images/marker-icon.png'
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
+
 /* This code is needed to properly load the images in the Leaflet CSS */
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+    iconRetinaUrl,
+    iconUrl,
+    shadowUrl,
 });
+
+import Marker from "./marker"
 
 const PolandCenter = [52.25, 19, 25]
 
@@ -20,22 +26,28 @@ function Map(el) {
     const popup = L.popup();
     const targetLatLng = el.getAttribute('data-target-location');
     const targetAcc = el.getAttribute('data-target-location-zoom');
+    let lastMarker = null;
     if (targetLatLng && targetAcc) {
         const targetLatLngEl = window.document.getElementById(targetLatLng)
         const targetAccEl = window.document.getElementById(targetAcc)
         function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent(e.latlng.toString())
-                .openOn(map);
+            const acc = map.getZoom()
+            const lng = e.latlng.lng
+            const lat = e.latlng.lat
+            if (lastMarker) {
+                lastMarker.remove()
+            }
+            lastMarker = Marker({lng, lat, acc}).addTo(map)
             targetLatLngEl.value = JSON.stringify({
                 type: "Point",
-                coordinates: [e.latlng.lng, e.latlng.lat]
+                coordinates: [lng, lat]
             })
-            targetAccEl.value = map.getZoom()
+            targetAccEl.value = acc
         }
 
         map.on('click', onMapClick);
     }
+
+    return map
 }
 export default Map;

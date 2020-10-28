@@ -20,7 +20,7 @@ defmodule MamWirusa.Spread do
 
   """
   def list_cases do
-    Repo.all(Case)
+    Repo.all(Case |> limit(1000))
   end
 
   @doc """
