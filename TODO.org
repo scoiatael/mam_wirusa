@@ -1,11 +1,12 @@
 #+TITLE: mam wirusa - todo
-* [40%] MVP
+* [33%] MVP
 ** DONE Setup repo
 ** DONE Add Leaflet for simple maps
 https://leafletjs.com/examples/quick-start/ with OSM https://leafletjs.com
 ** TODO Simple case registration button
 ** TODO Heroku deployment
 https://hexdocs.pm/phoenix/heroku.html
+** TODO proper translation
 ** TODO Gain some traction?
 * [0%] Tracking
 ** TODO Heatmap

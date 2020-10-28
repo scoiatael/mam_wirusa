@@ -30,7 +30,7 @@ function Map(el) {
                 .openOn(map);
             targetLatLngEl.value = JSON.stringify({
                 type: "Point",
-                coordinates: [e.latlng.lat, e.latlng.lng]
+                coordinates: [e.latlng.lng, e.latlng.lat]
             })
             targetAccEl.value = map.getZoom()
         }

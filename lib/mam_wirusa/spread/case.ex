@@ -14,7 +14,6 @@ defmodule MamWirusa.Spread.Case do
     timestamps()
   end
 
-  @doc false
   def changeset(case, attrs) do
     case
     |> cast(attrs, [:infected_at, :information, :location, :location_accuracy])

@@ -7,6 +7,8 @@ defmodule MamWirusa.Spread do
   alias MamWirusa.Repo
 
   alias MamWirusa.Spread.Case
+  alias MamWirusa.Command
+  alias MamWirusa.Commands.ReportCase
 
   @doc """
   Returns the list of cases.
@@ -50,55 +52,28 @@ defmodule MamWirusa.Spread do
 
   """
   def create_case(attrs \\ %{}) do
+    with {:ok, %Case{} = case} <- create_case_datum(attrs) do
+      {create_case_event(case), case}
+    end
+  end
+
+  defp create_case_event(%Case{
+         uuid: uuid,
+         infected_at: infected_at,
+         location: %Geo.Point{coordinates: {longitude, latitude}},
+         location_accuracy: location_accuracy
+       }) do
+    Command.dispatch(%ReportCase{
+      uuid: uuid,
+      infected_at: infected_at,
+      location: %{lat: latitude, long: longitude},
+      location_accuracy: location_accuracy
+    })
+  end
+
+  defp create_case_datum(attrs) do
     %Case{}
     |> Case.changeset(attrs)
     |> Repo.insert()
-  end
-
-  @doc """
-  Updates a case.
-
-  ## Examples
-
-      iex> update_case(case, %{field: new_value})
-      {:ok, %Case{}}
-
-      iex> update_case(case, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_case(%Case{} = case, attrs) do
-    case
-    |> Case.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a case.
-
-  ## Examples
-
-      iex> delete_case(case)
-      {:ok, %Case{}}
-
-      iex> delete_case(case)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_case(%Case{} = case) do
-    Repo.delete(case)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking case changes.
-
-  ## Examples
-
-      iex> change_case(case)
-      %Ecto.Changeset{data: %Case{}}
-
-  """
-  def change_case(%Case{} = case, attrs \\ %{}) do
-    Case.changeset(case, attrs)
   end
 end
