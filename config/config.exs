@@ -10,7 +10,6 @@ use Mix.Config
 config :mam_wirusa,
   ecto_repos: [MamWirusa.Repo]
 
-config :mam_wirusa, MamWirusa.Repo, types: MamWirusa.PostgresTypes
 config :mam_wirusa, event_stores: [MamWirusa.EventStore]
 
 # Configures the endpoint
@@ -28,6 +27,9 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :geo_postgis,
+  json_library: Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

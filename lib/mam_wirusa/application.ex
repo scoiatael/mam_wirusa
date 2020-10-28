@@ -1,6 +1,7 @@
 Postgrex.Types.define(
   MamWirusa.PostgresTypes,
-  [Geo.PostGIS.Extension] ++ Ecto.Adapters.Postgres.extensions()
+  [Geo.PostGIS.Extension] ++ Ecto.Adapters.Postgres.extensions(),
+  json: Jason
 )
 
 defmodule MamWirusa.Application do

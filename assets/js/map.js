@@ -18,18 +18,21 @@ function Map(el) {
     }).addTo(map);
 
     const popup = L.popup();
-    const target = el.getAttribute('data-target');
-    if (target) {
-        const targetEl = window.document.getElementById(target)
+    const targetLatLng = el.getAttribute('data-target-location');
+    const targetAcc = el.getAttribute('data-target-location-zoom');
+    if (targetLatLng && targetAcc) {
+        const targetLatLngEl = window.document.getElementById(targetLatLng)
+        const targetAccEl = window.document.getElementById(targetAcc)
         function onMapClick(e) {
             popup
                 .setLatLng(e.latlng)
                 .setContent(e.latlng.toString())
                 .openOn(map);
-            targetEl.value = JSON.stringify({
-                latlng: e.latlng,
-                zoom: map.getZoom()
+            targetLatLngEl.value = JSON.stringify({
+                type: "Point",
+                coordinates: [e.latlng.lat, e.latlng.lng]
             })
+            targetAccEl.value = map.getZoom()
         }
 
         map.on('click', onMapClick);

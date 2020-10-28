@@ -10,11 +10,12 @@
   <%= error_tag f, :infected_at %>
 
   <%= label f, :location, (gettext "Gdzie?") %>
-    <section class="phx-hero" id="map-hero" data-target="case_location">
+  <%= error_tag f, :location %>
+    <section class="phx-hero" id="map-hero" data-target-location="case_location" data-target-location-zoom="case_location_accuracy">
       <h1><%= gettext "Ładowanie mapy..." %></h1>
     </section>
   <%= hidden_input f, :location %>
-  <%= error_tag f, :location_accuracy %>
+  <%= hidden_input f, :location_accuracy %>
 
   <%= label f, :information, (gettext "Kto mógł się od Ciebie zarazić?") %>
   <%= textarea f, :information %>

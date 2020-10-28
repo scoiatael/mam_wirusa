@@ -9,9 +9,13 @@ defmodule MamWirusaWeb.CaseController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  def index(conn, _params) do
+    redirect(conn, to: Routes.page_path(conn, :index))
+  end
+
   def create(conn, %{"case" => case_params}) do
     case Spread.create_case(case_params) do
-      {:ok, case} ->
+      {:ok, _case} ->
         conn
         |> put_flash(:info, "Case created successfully.")
         |> redirect(to: Routes.page_path(conn, :index))
