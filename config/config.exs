@@ -10,6 +10,8 @@ use Mix.Config
 config :mam_wirusa,
   ecto_repos: [MamWirusa.Repo]
 
+config :mam_wirusa, MamWirusaWeb.Gettext, default_locale: "pl"
+
 config :mam_wirusa, event_stores: [MamWirusa.EventStore]
 
 # Configures the endpoint

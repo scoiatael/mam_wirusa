@@ -1,5 +1,6 @@
 defmodule MamWirusaWeb.CaseController do
   use MamWirusaWeb, :controller
+  import MamWirusaWeb.Gettext
 
   alias MamWirusa.Spread
   alias MamWirusa.Spread.Case
@@ -16,7 +17,12 @@ defmodule MamWirusaWeb.CaseController do
     case Spread.create_case(case_params) do
       {:ok, _case} ->
         conn
-        |> put_flash(:info, "Case created successfully.")
+        |> put_flash(
+          :info,
+          gettext(
+            "Dodano nowy przypadek. Pamiętaj żeby zadzwonić pod 112 i zgłosić się do sanepidu."
+          )
+        )
         |> redirect(to: Routes.page_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
