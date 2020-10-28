@@ -3,7 +3,7 @@ defmodule MamWirusa.Repo.Migrations.EnablePostgis do
 
   def up do
     execute("CREATE EXTENSION IF NOT EXISTS postgis")
-    execute("CREATE EXTENSION IF NOT EXISTS uuid-ossp")
+    execute("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
   end
 
   def down do
