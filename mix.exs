@@ -5,7 +5,7 @@ defmodule MamWirusa.MixProject do
     [
       app: :mam_wirusa,
       version: "0.1.0",
-      elixir: "~> 1",
+      elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
