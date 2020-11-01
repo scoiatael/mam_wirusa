@@ -3,6 +3,8 @@ defmodule MamWirusaWeb.PageController do
 
   alias MamWirusa.Spread
 
+  plug :cache
+
   def index(conn, _params) do
     render(conn, "index.html", cases: Spread.list_cases(4000) |> serialize_cases)
   end
@@ -20,5 +22,9 @@ defmodule MamWirusaWeb.PageController do
 
   def privacy(conn, _params) do
     render(conn, "privacy.html")
+  end
+
+  defp cache(conn, _) do
+    Plug.Conn.put_resp_header(conn, "cache-control", "max-age=1, public")
   end
 end
