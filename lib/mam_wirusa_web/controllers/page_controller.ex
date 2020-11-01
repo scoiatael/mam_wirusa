@@ -4,7 +4,7 @@ defmodule MamWirusaWeb.PageController do
   alias MamWirusa.Spread
 
   def index(conn, _params) do
-    render(conn, "index.html", cases: Spread.list_cases() |> serialize_cases)
+    render(conn, "index.html", cases: Spread.list_cases(4000) |> serialize_cases)
   end
 
   defp serialize_cases(cases) do

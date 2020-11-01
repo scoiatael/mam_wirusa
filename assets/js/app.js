@@ -23,6 +23,7 @@ if (mapEl) {
   const map = Map(mapEl)
 
   if (window.Cases) {
-    console.log(window.Cases.map(([lng, lat, acc, info, reported_at]) => Marker({lng, lat, acc}).bindPopup(`${reported_at} - ${info}`).addTo(map)))
+    window.Cases.map(([lng, lat, acc, info, reported_at]) =>
+                     Marker({lng, lat, acc}).bindPopup(`${reported_at} - ${info}`).addTo(map))
   }
 }

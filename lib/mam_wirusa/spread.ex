@@ -19,8 +19,8 @@ defmodule MamWirusa.Spread do
       [%Case{}, ...]
 
   """
-  def list_cases do
-    Repo.all(Case |> limit(1000))
+  def list_cases(num) do
+    Repo.all(Case |> order_by(desc: :infected_at) |> limit(^num))
   end
 
   @doc """

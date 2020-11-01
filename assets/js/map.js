@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
 
 import Marker from "./marker"
 
-const PolandCenter = [52.25, 19, 25]
+const PolandCenter = [52.25, 19.25]
 
 function Map(el) {
     const map = L.map(el).setView(PolandCenter, 6);
